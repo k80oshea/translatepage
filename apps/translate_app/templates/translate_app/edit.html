@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Edit Translation</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'translate_app/edit.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Edit Translation</h1>
+        <div class="content">
+            <div class="sidebar">
+                <a href="/">Home</a>
+                <a href="/edit/langs">Admin Edit</a>
+                <a href="/newuser">Add User</a>
+                <a href="/logout">Logout</a>
+            </div>
+            <div class="main">
+                <form action="/change/{{l2_text.id}}" method="post">
+                    {% csrf_token %}
+                    <label for="lang1">Source Language (Hipster Lorem):</label>
+                    <textarea name="lang1" rows="8" cols="60" wrap="soft">{{l2_text.translation.text1}}</textarea>
+                    <label for="lang2">Translated language (Gansta Lorem):</label>
+                    <textarea name="lang2" rows="8" cols="60" wrap="soft">{{l2_text.text2}}</textarea>
+                    <button type="submit">Save translations</button>
+                </form>
+                {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

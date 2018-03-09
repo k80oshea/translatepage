@@ -1,0 +1,46 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.wrapper {
+    width: 1200px;
+    height: 580px;
+    margin: 0px auto;
+}
+h1 {
+    width: 1200px;
+    height: 50px;
+    display: block;
+}
+.content {
+    display: flex;
+}
+.sidebar {
+    width: 200px;
+    height: 540px;
+}
+.sidebar a {
+    display: block;
+    padding: 5px 0px;
+}
+.main {
+    width: 1000px;
+    display: block;
+}
+form {
+    width: 450px;
+    padding: 10px;
+}
+label {
+    margin: 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+textarea {
+    margin: 10px;
+}
+button {
+    float: right;
+    padding: 5px;
+    margin: 10px;
+}

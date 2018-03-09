@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin Login</title>
+</head>
+<body>
+    <h1>New User</h1>
+    <form action="/user/signup" method="post">
+        {% csrf_token %}
+        <div>First Name: <input type="text" name="first"></div>
+        <div>Last Name: <input type="text" name="last"></div>
+        <div>Email: <input type="text" name="email"></div>
+        <div>Password: <input type="password" name="password"></div>
+        <div>Confirm: <input type="password" name="confirm"></div>
+        <div>User Level: <select name="level" value="Normal">
+                <option value=0>Normal</option>
+                <option value=9>Admin</option>
+            </select>
+        </div>
+        <input type="submit" value="Add User"></button>
+    </form>
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <br><br>
+    <a href="/"><button>Go Back</button></a> 
+</body>
+</html>

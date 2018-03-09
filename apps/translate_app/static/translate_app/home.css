@@ -1,0 +1,30 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+.wrapper {
+    width: 1200px;
+    margin: 0px auto;
+}
+h1 {
+    width: 1200px;
+    height: 50px;
+    display: block;
+}
+.content {
+    display: flex;
+}
+.sidebar {
+    width: 200px;
+}
+.sidebar a {
+    width: 150px;
+    padding: 5px 0px;
+    display: block;
+}
+.main {
+    width: 900px;
+}
+.main p {
+    margin: 20px;
+}

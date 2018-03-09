@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Staff Login</title>
+</head>
+<body>
+    {% if numstaff < 1 %}
+        <h1>New Administrator</h1>
+        <form action="/user/signup" method="post">
+            {% csrf_token %}
+            First Name: <input type="text" name="first">
+            Last Name: <input type="text" name="last">
+            Email: <input type="text" name="email">
+            Password: <input type="password" name="password">
+            Confirm: <input type="password" name="confirm">
+            <input type="submit" value="Log In"></button>
+        </form>
+    {% else %}
+        <h1>Staff Login</h1>
+        <form action="/user/login" method="post">
+            {% csrf_token %}
+            Email: <input type="text" name="email">
+            Password: <input type="password" name="password">
+            <input type="submit" value="Log In"></button>
+        </form>
+    {% endif %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</body>
+</html>

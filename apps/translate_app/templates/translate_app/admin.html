@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Translate Page</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'translate_app/admin.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Manage Translations</h1>
+        <div class="content">
+            <div class="sidebar">
+                <a href="/">Home</a>
+                <a href="/edit/langs">Admin Edit</a>
+                <a href="/newuser">Add User</a>
+                <a href="/logout">Logout</a>
+            </div>
+            <div class="main">
+                <div class="new">
+                    <form action="/newtext" method="post">
+                        {% csrf_token %}
+                        <label for="lang1">Source Language (Hipster Lorem):</label><textarea name="lang1" rows="4" cols="48" wrap="soft"></textarea>
+                        
+                        <label for="lang2">Translated language (Gansta Lorem):</label><textarea name="lang2" rows="4" cols="40" wrap="soft"></textarea>
+                        <button type="submit">Add paragraph</button>
+                    </form>
+                    {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="entered">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td>Text ID</td>
+                                <td>This text is in Language 1 (Hipster Lorem)</td>
+                                <td>This text is in Language 2 (Gansta Lorem)</td>
+                                <td>Actions</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for x in l2_text %}
+                                <tr>
+                                    <td>{{x.id}}</td>
+                                    <td class="text">{{x.translation.text1}}</td>
+                                    <td class="text">{{x.text2}}</td>
+                                    <td><a href="/edit/{{x.id}}">Edit Text</a> <a href="/delete/{{x.id}}">Delete</a></td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
