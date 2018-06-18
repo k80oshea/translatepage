@@ -14,5 +14,5 @@ urlpatterns = [
     url(r'^edit/(?P<text_id>\d+)$', views.edit),
     url(r'^change/(?P<text_id>\d+)$', views.change),   
     url(r'^delete/(?P<text_id>\d+)$', views.delete), 
-    url(r'^logout$', views.logout),
+    url(r'^logout$', views.logout)
 ]
