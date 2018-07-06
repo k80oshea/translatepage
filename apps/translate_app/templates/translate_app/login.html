@@ -5,35 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Staff Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
-    {% if numstaff < 1 %}
-        <h1>New Administrator</h1>
-        <form action="/user/signup" method="post">
-            {% csrf_token %}
-            First Name: <input type="text" name="first">
-            Last Name: <input type="text" name="last">
-            Email: <input type="text" name="email">
-            Password: <input type="password" name="password">
-            Confirm: <input type="password" name="confirm">
-            <input type="submit" value="Log In"></button>
-        </form>
-    {% else %}
-        <h1>Staff Login</h1>
-        <form action="/user/login" method="post">
-            {% csrf_token %}
-            Email: <input type="text" name="email">
-            Password: <input type="password" name="password">
-            <input type="submit" value="Log In"></button>
-        </form>
-    {% endif %}
-        {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-
+    <div class="container">
+        <div class="col-md-4">
+            {% if numstaff < 1 %}
+            <h1>New Administrator</h1>
+            <form action="/user/signup" method="post" class="form-group">
+                {% csrf_token %}
+                    <div>First Name: <input type="text" name="first" class="form-control"></div><br>
+                    <div>Last Name: <input type="text" name="last" class="form-control"></div><br>
+                    <div>Email: <input type="text" name="email" class="form-control"></div><br>
+                    <div>Password: <input type="password" name="password" class="form-control"></div><br>
+                    <div>Confirm: <input type="password" name="confirm" class="form-control"></div><br>
+                    <div><input type="submit" value="Log In" class="btn btn-info"></div>
+            </form>
+            {% else %}
+            <h1>Staff Login</h1>
+            <form action="/user/login" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div>Email: <input type="text" name="email" class="form-control"></div><br>
+                    <div>Password: <input type="password" name="password" class="form-control"></div><br>
+                    <div><input type="submit" value="Log In" class="btn btn-info"></div>
+                </div>
+            </form>
+        </div> 
+        <div class="col-md-4">
+            {% endif %}
+                {% if messages %}
+                <ul class="messages text-danger">
+                    {% for message in messages %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+    </div>
 </body>
 </html>
