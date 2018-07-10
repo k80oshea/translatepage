@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Translate Page</title>
-    <!-- {% load static %} -->
-    <!-- <link rel="stylesheet" href="{% static 'translate_app/home.css' %}" media="screen" title="no title"  charset="utf-8"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -19,13 +17,13 @@
                 <div><a href="/lang/1">Language 1</a></div>
                 <div><a href="/lang/2">Language 2</a></div>
                 {% if request.session.level == 9 %}
-                    <div><a href="/edit/langs">Admin Edit</a></div>
-                    <div><a href="/newuser">Add User</a></div>
+                    <div><a href="/edit/langs">Admin - Manage Entries</a></div>
+                    <div><a href="/newuser">Admin - Add User</a></div>
                     <div><a href="/logout">Logout</a></div>
                 {% elif request.session.level == 0 %}
                     <div><a href="/logout">Logout</a></div>
                 {% else %}
-                    <div><a href="/login">Staff Login</a></div>
+                    <div><a href="/login">Admin Login</a></div>
                 {% endif %}
             </div>
             <div class="col-md-10">

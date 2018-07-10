@@ -24,7 +24,7 @@
                     <div><input type="submit" value="Log In" class="btn btn-info"></div>
             </form>
             {% else %}
-            <h1>Staff Login</h1>
+            <h1>Admin Login</h1>
             <form action="/user/login" method="post">
                 {% csrf_token %}
                 <div class="form-group">
@@ -33,10 +33,10 @@
                     <div><input type="submit" value="Log In" class="btn btn-info"></div>
                 </div>
             </form>
-        </div> 
-        <div class="col-md-4">
             {% endif %}
-                {% if messages %}
+        </div> 
+        <div class="col-md-4">                
+            {% if messages %}
                 <ul class="messages text-danger">
                     {% for message in messages %}
                         <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><strong>{{ message }}</strong></li>
